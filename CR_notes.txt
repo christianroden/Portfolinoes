@@ -5,15 +5,39 @@ columns to drop...
         "EmpID", "EmployeeCount", "EmployeeNumber", "StandardHours", "Over18"
 
 delete/impute missing data:
-    "YearsWithCurrManager": nan -> ?
+    "YearsWithCurrManager": nan -> ? (Maybe determine imputation via GridSearch: 0 or median)
 
 edit columns:
     "Attrition": "Yes" -> 1, "No" -> 0
     "OverTime": "Yes" -> 1, "No" -> 0
     "Gender": "Female" -> 1, "Male" -> 0
-    "BusinessTravel": 'TravelRarely' -> 'Travel_Rarely'
+    "BusinessTravel": "Non-Travel" -> 0
+                      'TravelRarely' -> 1
+                      'Travel_Rarely' -> 1
+                      "Travel_Frequently" -> 2
 
-assign categorical orders:
-    "AgeGroup": '18-25', '26-35', '36-45', '46-55', '55+'
+drop duplicates
+
+######### NO! ##########
+assign categorical orders to ordinal categories:
     "BusinessTravel": 'Non-Travel', 'Travel_Rarely', 'Travel_Frequently'
-    "SalarySlab": 'Upto 5k', '5k-10k', '10k-15k', '15k+'
+    (leave "AgeGroup" and "SalarySlab" as nominal categories!)
+########################
+
+consider PCA for "Years..."-columns. Do not include "YearsSinceLastPromotion".
+
+Target is unbalanced. 
+    -> Account for that in the pipeline. (For SVC, just set class_weight="balanced")
+
+Data is kinda semi-sorted.
+    -> Randomize train/test-split
+    -> Basically, shuffle at every turn
+
+Try out dropping...
+    complete rows:
+        "PerformanceRating"
+    features after encoding:
+        AgeGroup "55+"
+        JobRole "Research Scientist", "Sales Executive"
+
+Maybe take a closer look at the peculiar pattern in the MonthlyIncome/TotalWorkingYears-pairing
