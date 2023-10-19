@@ -1,0 +1,19 @@
+target column: "Attrition"
+
+columns to drop...
+    ...right away because they don't provide any relevant information:
+        "EmpID", "EmployeeCount", "EmployeeNumber", "StandardHours", "Over18"
+
+delete/impute missing data:
+    "YearsWithCurrManager": nan -> ?
+
+edit columns:
+    "Attrition": "Yes" -> 1, "No" -> 0
+    "OverTime": "Yes" -> 1, "No" -> 0
+    "Gender": "Female" -> 1, "Male" -> 0
+    "BusinessTravel": 'TravelRarely' -> 'Travel_Rarely'
+
+assign categorical orders:
+    "AgeGroup": '18-25', '26-35', '36-45', '46-55', '55+'
+    "BusinessTravel": 'Non-Travel', 'Travel_Rarely', 'Travel_Frequently'
+    "SalarySlab": 'Upto 5k', '5k-10k', '10k-15k', '15k+'
