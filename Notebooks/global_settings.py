@@ -1,4 +1,10 @@
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+'''Project\'s global settings:
+    - essential modules
+    - global variables
+    - matplotlib and seaborn settings
+'''
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 # import essential modules
 
 import pandas as pd
@@ -17,7 +23,8 @@ pd.options.display.float_format = '{:.2f}'.format
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # color palette
 
-color_palette = {0:'#85d4c8', 1:'#fc6226', 2:'#fc037f'} #db4125 fc6226 0 - main_color, 1 - accent_color
+# 0 - main_color, 1 - accent_color
+color_palette = {0:'#85d4c8', 1:'#fc6226', 2:'#fc037f'} # db4125 fc6226 
 sns_color_palette = {0:'#51ad9f', 1:'#fc6226'}
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -45,4 +52,4 @@ sns.set_context('paper', rc={'axes.labelsize':10.5, 'legend.fontsize':10, 'legen
 
 
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
