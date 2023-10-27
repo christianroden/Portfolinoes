@@ -1,3 +1,10 @@
+'''Project's custom functions:
+    - plot_roc (draws ROC curve)
+    - f_divline (draws the divider line in the cell's output)
+'''
+
+
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # horizontal divider line
@@ -16,5 +23,31 @@ def f_divline(pad_before=True, pad_after=True):
     
     return print(line)
 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# ROC visualization
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Referrenced modules
+from sklearn.metrics import roc_curve, auc
+from global_settings import *
+import global_settings
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+def plot_roc(pipe, Xtest, ytest):
+    
+    yscores = pipe.predict_proba(Xtest)[:,1]
+    fpr, tpr, _ = roc_curve(ytest, yscores)
+    roc_auc = auc(fpr, tpr)
+    
+    plt.figure(figsize=(6, 6))
+    plt.plot(fpr, tpr, color=color_palette[1], lw=1.2, label='ROC curve (area = {:.2f})'.format(roc_auc))
+    plt.plot([0, 1], [0, 1], color='navy', lw=1.2, linestyle=(0, (8,10)))
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('Receiver Operating Characteristic (ROC) Curve')
+    plt.legend(loc='lower right')
+
+    
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
