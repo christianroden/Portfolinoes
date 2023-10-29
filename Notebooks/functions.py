@@ -31,6 +31,7 @@ def f_divline(pad_before=True, pad_after=True):
 from sklearn.metrics import roc_curve, auc
 from global_settings import *
 import global_settings
+import matplotlib.ticker as ticker
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -40,13 +41,18 @@ def plot_roc(pipe, Xtest, ytest):
     fpr, tpr, _ = roc_curve(ytest, yscores)
     roc_auc = auc(fpr, tpr)
     
-    plt.figure(figsize=(6, 6))
+    plt.figure(figsize=(9, 6))
     plt.plot(fpr, tpr, color=color_palette[1], lw=1.2, label='ROC curve (area = {:.2f})'.format(roc_auc))
     plt.plot([0, 1], [0, 1], color='navy', lw=1.2, linestyle=(0, (8,10)))
     plt.xlabel('False Positive Rate')
-    plt.ylabel('True Positive Rate')
+    plt.ylabel('True Positive Rate (recall)')
     plt.title('Receiver Operating Characteristic (ROC) Curve')
     plt.legend(loc='lower right')
+    
+    plt.gca().xaxis.set_major_formatter(ticker.PercentFormatter(xmax=1))
+    plt.gca().yaxis.set_major_formatter(ticker.PercentFormatter(xmax=1))
+    
+    # return plt.figure()
 
     
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

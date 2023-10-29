@@ -42,7 +42,7 @@ plt.rc('axes.spines', bottom=True, left=True)
 
 plt.rc('font', size=12)
 plt.rc('axes', titlesize=12, labelsize=11, titlepad=10)
-plt.rc('xtick', labelsize=8)
+plt.rc('xtick', labelsize=8) # color = '#000000'
 plt.rc('ytick', labelsize=8)
 plt.rc('figure', titlesize=14)
 plt.rc('legend', fontsize=11, title_fontsize=11)
