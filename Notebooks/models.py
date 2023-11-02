@@ -1,8 +1,23 @@
 from sklearn.svm import SVC
 from xgboost import XGBClassifier
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from global_settings import *
 
 model_settings = {
+    'log': {'model': LogisticRegression(penalty='l2', 
+                                        tol=0.01, 
+                                        C=0.1, 
+                                        class_weight='balanced', 
+                                        solver='saga', 
+                                        max_iter=10000, 
+                                        #l1_ratio=None, 
+                                        random_state=random_seed),
+            'params': {#'estimator__tol': [0.008, 0.01, 0.012, 0.014, 0.1, 1], 
+                       #'estimator__C': [0.072, 0.076, 0.08, 0.084, 0.088, 0.092, 0.096, 0.01, 0.014, 0.018, 0.022, 0.026, 0.03]
+                       #'estimator__solver': ['lbfgs', 'saga']
+                      }
+           },
     'svc': {'model': SVC(C=1,
                          kernel='sigmoid',
                          #degree=3,
