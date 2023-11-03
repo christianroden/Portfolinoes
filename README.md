@@ -71,8 +71,19 @@ Additional advantages of the chosen model:
 - straightforward intepretation allowing for further development
 
 ## Model Interpretation
+
 ### Feature Importance
 ![Feature Importance](/Images/feature_importance.png)
+Upon observing the feature importance the biggest impact on employee's attrition have:
+
+- if an employee is doing **overtime**
+- what is the **marital status** of the employee
+- their level of **job involvement**
+- the amount of **years they are profesionally active**
+- what is their **role within the organization**
+- if they do **business travel** or not
+- what is their **level of job satisfaction**
+
 ### Retention Strategies
 
 ## Project's highlights
