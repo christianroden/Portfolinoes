@@ -27,7 +27,7 @@ Upon assessing the information (prediction) a company can settle on a **cost-opt
 
 ## Process
 
-### 1. Conventions
+### 1. Project's Conventions
 Conventions are discussed and agreed on: coding convention (programming style), variable names, random parameters (`random_state` for data splits and models), internal JupyterLab notebooks' structure, Git's repository folder structure.\
 Early establishment of project's conventions is crucial, since:
 - allows for unbiased models performance's metrics comparison
