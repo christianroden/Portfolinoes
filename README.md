@@ -20,6 +20,7 @@ Upon assessing the information (prediction) a company can settle on a **cost-opt
 - typical binary classification problem
 - relatively small amount of observations in the data set for ML Model training
 - imbalanced target classes distribution
+- developing a robust model, where solution model's performance metrics are independent from the `random_state` (data split as well as models)
 - finding a good performance metric applicable to the project's goal (custom scoring - f2 (f-beta with beta=2)
   - more weight on **recall** (optimizing **False Negative** results - indicating the employees willing to quit) than on **precision** (optimizing **False Positive** results - misclassifying the ones who are willing to stay as wanting to leave)
 - lack of aim set
@@ -57,9 +58,9 @@ Taking into consideration learnings from models' interpretation - new features a
 
 |  | Support Vector Machine | K-Nearest Neighbors | Decision Tree | Logistic Regression | Random Forest | XGBoost |
 | :--- | --- | --- | --- | --- | --- | --- |
-| **F2 Score** | 64.52 % | 32.61 % | 53.36 % | 70.14 % | 60.50 % | 62.16 % |
-| **Recall** | 76.60 % | 31.91 % | 57.45 % | 82.98 % | 72.34 % | 48.94 % |
-| **Precision** | 39.56 % | 35.71 % | 41.54 % | 43.33 % | 36.56 % | 85.19 % |
+| **F2 Score** | 64.52 % | 32.61 % | 53.36 % | 72.44 % | 60.50 % | 62.16 % |
+| **Recall** | 76.60 % | 31.91 % | 57.45 % | 87.23 % | 72.34 % | 48.94 % |
+| **Precision** | 39.56 % | 35.71 % | 41.54 % | 43.16 % | 36.56 % | 85.19 % |
 
 ## Choosing the best model
 
@@ -74,17 +75,33 @@ Additional advantages of the chosen model:
 
 ### Feature Importance
 ![Feature Importance](/Images/feature_importance.png)
-Upon observing the feature importance the biggest impact on employee's attrition have:
+According to the classification model, and as per feature importance - the biggest impact on employee's attrition have following factors:
 
-- if an employee is doing **overtime**
-- what is the **marital status** of the employee
-- their level of **job involvement**
-- the amount of **years they are profesionally active**
-- what is their **role within the organization**
-- if they do **business travel** or not
-- what is their **level of job satisfaction**
+- if an employee is doing **`overtime`**
+- what is the **`marital status`** of the employee
+- their level of **`job involvement`**
+- the amount of **`years they are professionally active`**
+- what is their **`role within the organization`**
+- if they do **`business travel`** or not
+- what is their **`level of job satisfaction`**
 
 ### Retention Strategies
+
+Should address the observations listed in the Feature Importance point, prioritizing from top to bottom.\
+Obviously we cannot have a direct influence on some of the employee's attributes, like for instance: **`marital status`**, **`years they are professionally active`**.
+
+Couple of suggestions:
+
+- **`Overtime`**: lower whenever possible, if not: be transparent regarding the reasons of overtime, delegate some of the ownership to the employees. Potentially the problem could also be planning-related and have its source in the Production Dept. It would be worth to assess the situation further and potentially train the Production Dept. in order to increase their planning precission.
+- **`Marital Status`**: it's difficult to be addressed because it's not work-related
+- **`Job Involvement`** and **`Level of Job Satisfaction`**: keywords here would be: motivate and delegate ownership (appointing chapions of specific production cycles or features)
+- **`Business Travel`**: investigate and limit whenever possible, but inspect further if it's not correlated with employee's **`marital status`**
+- **`Role within the organization`**:
+<p align="center">
+<img src="/Images/attrition_JobRole.png" />
+</p>
+
+As per above chart we can observe that we have higher than average `Attrition` in the roles: Human Resources, Laboratory Technician, Sale Representative. We would recommend further assessment of those departments and coming up with specific retention strategies per roles / dept.
 
 ## Project's highlights
 - centralized files for functions and global settings definitions allowing for streamlined editing of global parameters (i.e. `random_state`), as well as uniform / consistent visualization's style
