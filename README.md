@@ -101,7 +101,7 @@ Couple of suggestions:
 <img src="/Images/attrition_JobRole.png" />
 </p>
 
-As per above chart we can observe that we have higher than average `Attrition` in the roles: Human Resources, Laboratory Technician, Sale Representative. We would recommend further assessment of those departments and coming up with specific retention strategies per roles / dept.
+As per above chart we can observe that we have higher than average `Attrition` in the roles: **Human Resources**, **Laboratory Technician**, **Sale Representative**. We would recommend further assessment of those departments and coming up with specific retention strategies per roles / dept.
 
 ## Project's highlights
 - shared files for functions and global settings allowing for streamlined editing of global parameters (i.e. `random_state`), as well as uniform / consistent visualization's style throught Jupyter Notebooks
