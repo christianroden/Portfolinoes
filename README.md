@@ -103,7 +103,7 @@ Couple of suggestions:
 
 As per above chart we can observe that we have higher than average `Attrition` in the roles: **Human Resources**, **Laboratory Technician**, **Sale Representative**. We would recommend further assessment of those departments and coming up with specific retention strategies per roles / dept.
 
-## Project's highlights
+## Project highlights
 - shared files for functions and global settings allowing for streamlined editing of global parameters (i.e. `random_state`), as well as uniform / consistent visualization's style throught Jupyter Notebooks
 - main pipeline with external model-definitions .py file allowing for streamlined model switching and comparison
 - advanced confussion matrix with meaningful color-coding with custom color maps additionally accompanying for color-blindness
