@@ -16,8 +16,8 @@ import seaborn as sns
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # global variables
 
-random_seed = 42
-random_seed_split = 0
+random_seed = 0
+random_seed_split = random_seed
 pd.options.display.float_format = '{:.2f}'.format
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
