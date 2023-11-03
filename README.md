@@ -104,12 +104,14 @@ Couple of suggestions:
 As per above chart we can observe that we have higher than average `Attrition` in the roles: Human Resources, Laboratory Technician, Sale Representative. We would recommend further assessment of those departments and coming up with specific retention strategies per roles / dept.
 
 ## Project's highlights
-- centralized files for functions and global settings definitions allowing for streamlined editing of global parameters (i.e. `random_state`), as well as uniform / consistent visualization's style
+- shared files for functions and global settings allowing for streamlined editing of global parameters (i.e. `random_state`), as well as uniform / consistent visualization's style throught Jupyter Notebooks
 - main pipeline with external model-definitions .py file allowing for streamlined model switching and comparison
 - advanced confussion matrix with meaningful color-coding with custom color maps additionally accompanying for color-blindness
 - bulk-generation of data visualizations streamlining the process of EDA 
 
 ## Repository description
+- how to install
+- files description
 
 ## Disclaimer
 This project was done in the period of 2 weeks as a follow-up to the [StackFuel GmbH](https://stackfuel.com/en/) courses: Data Analytics Certification and Data Science Certification.
