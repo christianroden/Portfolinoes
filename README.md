@@ -1,6 +1,6 @@
 # Predicting employee attrition and retention strategies
-The goal of this project is to provide the HR department with information on a likelihood of an employee attrition (quitting the current job) using prediction driven by a machine learning classification algorithms.
-Such a decission might be dictated by a multitude of factors, professional as well as personal.
+The goal of this project is to provide the HR department with the information on a likelihood of an employee attrition (quitting the organization) using predictions driven by a machine learning classification algorithms.
+Such a decission might be dictated by a multitude of factors: professional as well as personal.\
 Upon assessing the information (prediction) a company can settle on a cost-optimal retention strategy and initiate it in order to prevent desired employees from attrition.
 
 ## Data Set
@@ -14,46 +14,74 @@ Upon assessing the information (prediction) a company can settle on a cost-optim
 **NA Values**: 57 / 1480, all in one Feature (YearsWithCurrManager)\
 **Duplicates**: 7 (All Features) + 3 (EmployeeNumber / EmpID)
 
-## Challenges
+## Problem Space
 
 - typical binary classification problem
 - relatively small amount of observations in the data set for ML Model training
 - imbalanced target classes distribution
-- finding a good performance metric applicable to scenario's goal (custom scoring - f2)
+- finding a good performance metric applicable to the project's goal (custom scoring - f2)
   - more weight on **recall** (optimizing **False Negative** results - indicating the employees willing to quit) than on **precision** (optimizing **False Positive** results - misclassifying the ones who are willing to stay as wanting to leave)
+- lack of aim set
 
 ## Process
-- EDA
-- models
-- pipeline
-- hyperparameters fine-tuning
+
+### 1. Conventions
+Conventions are discussed and agreed on: coding convention (programming style), variable names, random parameters (`random_state` for data splits and models), internal JupyterLab notebooks' structure, Git's repository folder structure.\
+Early establishment of project's conventions is crucial, since:
+- allows for unbiased models' performance metrics comparison and chosing the best-performing one
+- increases code / JupyterLab's notebooks readability 
+- in the later project's phases: prevents time overhead required for cleanups (code, repository)
+
+### 2. Exploratory Data Analysis
+In order to prevent bias in analytics - each team-member proceeds with EDA independently. The results are then exchanged and compared to include potentially missed-, as well as valuable-, insights.
+
+### 3. Models
+Distributed throughout team-members. Each one develops chosen base classification algorithms: Support Vector Machines (SVC) | Logistic Regression | K-Nearest Neighbors | Decision Tree / Random Forest.\
+Additional models / methods are taken into consideration (Artificial Neural Networks, XGBoost, Adaboost, Gradient Boost, VotingClassifier), but will be developed as a bonus - only upon main models being properly developed and fine-tuned.
+
+### 4. Pipeline
+Main pipeline is created by one team-member while other models are following its JupyterNotebook structure.
+
+### 5. Hyperparameters Fine-Tuning
+Model-specific search spaces are defined and fed into GridSearches. Performance Metrics between the models are compared and discussed. Potential improvements and model-specific issues are brainstormed.
+
+### 6. Model's Interpretation
+Feature importance are interpreted by utilizing model-specific methods (feature importance, permutation feat. importance, decision tree visualization)
+
+### 7. Feature Engineering
+Taking into consideration learnings from models' interpretation - new features are being brainstormed. Main pipeline is readjusted to acompany for feature engineering function.
 
 ## Models' Performance Metrics
 
 |  | Support Vector Machine | K-Nearest Neighbors | Decision Tree | Logistic Regression | Random Forest | XGBoost |
-| :--- | ---: | ---: | ---: | ---: | ---: | ---: |
+| :--- | --- | --- | --- | --- | --- | --- |
 | **F2 Score** | 64.52 % | 32.61 % | 53.36 % | 72.44 % | 60.50 % | 62.16 % |
 | **Recall** | 76.60 % | 31.91 % | 57.45 % | 87.23 % | 72.34 % | 48.94 % |
 | **Precision** | 39.56 % | 35.71 % | 41.54 % | 43.16 % | 36.56 % | 85.19 % |
+
+## Choosing the best model
+
+The best-performing model is Logistic Regression. It's tuned toward the F2 score, with more weight on the recall, what shows in the model's performance metrics.\
+Additional advantages of chosen model:
+
+- fast to compute
+- getting prediction probabilities for the target classes allowing deeper analysis and potential decision threshold shift
+- straightforward intepretation allowing for further development
 
 ## Interpretation
 - feature importance
 - retention strategies
 
 ## Project's highlights
-
-## Additional remarks
-- sync and transparency (agile)
-- common repository
-- keeping naming conventions
-- centralized shared files for functions and global settings definitions
-- presentation software
-- communication platform
+- centralized files for functions and global settings definitions allowing for streamlined editing of global parameters (i.e. `random_state`), as well as uniform / consistent visualization's style
+- main pipeline with external model-definitions .py file allowing for streamlined model switching and comparison
+- advanced confussion matrix with meaningful color-coding with custom color maps additionally accompanying for color-blindness
+- bulk-generation of data visualizations streamlining the process of EDA 
 
 ## Repository description
 
 ## Disclaimer
-This project was done in the period of 2 weeks as a follow-up to the StackFuel GmbH courses: Data Analytics and Data Science Certified Courses.
+This project was done in the period of 2 weeks as a follow-up to the [StackFuel GmbH](https://stackfuel.com/en/) courses: Data Analytics Certification and Data Science Certification.
 
 ### Team Members
 Christian Roden: [GitHub](https://github.com/christianroden)\
