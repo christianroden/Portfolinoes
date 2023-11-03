@@ -1,7 +1,8 @@
 # Predicting employee attrition and retention strategies
-The goal of this project is to provide the HR department with the information on a likelihood of an employee attrition (quitting the organization) using predictions driven by a machine learning classification algorithms.
-Such a decission might be dictated by a multitude of factors: professional as well as personal.\
-Upon assessing the information (prediction) a company can settle on a cost-optimal retention strategy and initiate it in order to prevent desired employees from attrition.
+The goal of this project is to provide the HR department with the information on a likelihood of an **employee attrition** (quitting the organization) using predictions driven by a machine learning classification algorithms.
+Such a decission might be dictated by a multitude of factors: professional as well as personal.
+
+Upon assessing the information (prediction) a company can settle on a **cost-optimal retention strategy** and initiate it in order to prevent desired employees from attrition.
 
 ## Data Set
 
@@ -10,16 +11,16 @@ Upon assessing the information (prediction) a company can settle on a cost-optim
 **Format:** single .csv file\
 **Size:** 1480 observations (unique: 1470)\
 **Number of Features:** 38\
-**Target Feature (Vector)**: Attrition, imbalanced, 16.1:83.9\
-**NA Values**: 57 / 1480, all in one Feature (YearsWithCurrManager)\
-**Duplicates**: 7 (All Features) + 3 (EmployeeNumber / EmpID)
+**Target Feature (Vector)**: `Attrition`, imbalanced, 16.1:83.9\
+**NA Values**: 57 / 1480, all in one Feature (`YearsWithCurrManager`)\
+**Duplicates**: 7 (All Features) + 3 (`EmployeeNumber` / `EmpID`)
 
 ## Problem Space
 
 - typical binary classification problem
 - relatively small amount of observations in the data set for ML Model training
 - imbalanced target classes distribution
-- finding a good performance metric applicable to the project's goal (custom scoring - f2)
+- finding a good performance metric applicable to the project's goal (custom scoring - f2 (f-beta with beta=2)
   - more weight on **recall** (optimizing **False Negative** results - indicating the employees willing to quit) than on **precision** (optimizing **False Positive** results - misclassifying the ones who are willing to stay as wanting to leave)
 - lack of aim set
 
@@ -28,7 +29,7 @@ Upon assessing the information (prediction) a company can settle on a cost-optim
 ### 1. Conventions
 Conventions are discussed and agreed on: coding convention (programming style), variable names, random parameters (`random_state` for data splits and models), internal JupyterLab notebooks' structure, Git's repository folder structure.\
 Early establishment of project's conventions is crucial, since:
-- allows for unbiased models' performance metrics comparison and chosing the best-performing one
+- allows for unbiased models performance's metrics comparison
 - increases code / JupyterLab's notebooks readability 
 - in the later project's phases: prevents time overhead required for cleanups (code, repository)
 
@@ -37,7 +38,8 @@ In order to prevent bias in analytics - each team-member proceeds with EDA indep
 
 ### 3. Models
 Distributed throughout team-members. Each one develops chosen base classification algorithms: Support Vector Machines (SVC) | Logistic Regression | K-Nearest Neighbors | Decision Tree / Random Forest.\
-Additional models / methods are taken into consideration (Artificial Neural Networks, XGBoost, Adaboost, Gradient Boost, VotingClassifier), but will be developed as a bonus - only upon main models being properly developed and fine-tuned.
+Additional models / methods are taken into consideration (Artificial Neural Networks, XGBoost, Adaboost, Gradient Boost, VotingClassifier), but will be developed as a bonus - only upon main models being properly developed and fine-tuned.\
+From the additional models pool the project only accompanied for **XGBoost**.
 
 ### 4. Pipeline
 Main pipeline is created by one team-member while other models are following its JupyterNotebook structure.
@@ -55,22 +57,23 @@ Taking into consideration learnings from models' interpretation - new features a
 
 |  | Support Vector Machine | K-Nearest Neighbors | Decision Tree | Logistic Regression | Random Forest | XGBoost |
 | :--- | --- | --- | --- | --- | --- | --- |
-| **F2 Score** | 64.52 % | 32.61 % | 53.36 % | 72.44 % | 60.50 % | 62.16 % |
-| **Recall** | 76.60 % | 31.91 % | 57.45 % | 87.23 % | 72.34 % | 48.94 % |
-| **Precision** | 39.56 % | 35.71 % | 41.54 % | 43.16 % | 36.56 % | 85.19 % |
+| **F2 Score** | 64.52 % | 32.61 % | 53.36 % | 70.14 % | 60.50 % | 62.16 % |
+| **Recall** | 76.60 % | 31.91 % | 57.45 % | 82.98 % | 72.34 % | 48.94 % |
+| **Precision** | 39.56 % | 35.71 % | 41.54 % | 43.33 % | 36.56 % | 85.19 % |
 
 ## Choosing the best model
 
-The best-performing model is Logistic Regression. It's tuned toward the F2 score, with more weight on the recall, what shows in the model's performance metrics.\
-Additional advantages of chosen model:
+The best-performing model is **the Logistic Regression**. It's tuned toward the **F2 score**, with more weight on the recall, what shows in the model's performance metrics.\
+Additional advantages of the chosen model:
 
 - fast to compute
 - getting prediction probabilities for the target classes allowing deeper analysis and potential decision threshold shift
 - straightforward intepretation allowing for further development
 
-## Interpretation
-- feature importance
-- retention strategies
+## Model Interpretation
+### Feature Importance
+![Feature Importance](/Images/feature_importance.png)
+### Retention Strategies
 
 ## Project's highlights
 - centralized files for functions and global settings definitions allowing for streamlined editing of global parameters (i.e. `random_state`), as well as uniform / consistent visualization's style
